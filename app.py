@@ -10,3 +10,8 @@ API_KEY = os.environ.get("API_KEY")
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/documentation')
+def documentation():
+    return render_template('documentation.html')
