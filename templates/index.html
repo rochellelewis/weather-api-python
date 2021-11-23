@@ -29,6 +29,56 @@
                     {{err}}
                 </div>
             </div>
+
+            <!-- begin current conditions -->
+            <div class="row">
+                <h2>Current Conditions</h2>
+
+                <!-- begin conditions card -->
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card bg-light text-center">
+                        <!--<img src="https://via.placeholder.com/150" alt="icon">-->
+                        <div class="card-body">
+                            <h4>{{locale.location.address[0]}}</h4>
+                            <hr>
+                            <div class="h5">{{data.wxPhraseMedium}}, Temp: {{data.temperature}}&deg; F</div>
+                            <div class="h6">{{data.dayOfWeek}}, {{data.validTimeLocal}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- begin tabular data -->
+                <div class="col-sm-12 col-md-6 col-lg-8">
+                    <table class="table table-bordered table-striped table-light">
+                        <tbody>
+                            <tr>
+                                <th class="col-md-6" scope="row">Feels Like:</th>
+                                <td class="col-md-6">{{data.temperatureFeelsLike}}&deg; F</td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-6" scope="row">24h Precipitation:</th>
+                                <td class="col-md-6">{{data.precip24Hour}}</td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-6" scope="row">Hi Temp:</th>
+                                <td class="col-md-6">{{data.temperatureMax24Hour}}&deg; F</td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-6" scope="row">Lo Temp:</th>
+                                <td class="col-md-6">{{data.temperatureMin24Hour}}&deg; F</td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-6" scope="row">UV Index:</th>
+                                <td class="col-md-6">{{data.uvIndex}}</td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-6" scope="row">Wind:</th>
+                                <td class="col-md-6">{{data.windSpeed}}&nbsp;mph, {{data.windDirectionCardinal}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
 
