@@ -22,6 +22,15 @@ def get_locale(location_type, query):
     return data
 
 
+def get_weather(lat, long):
+    headers = {'Accept': 'application/json'}
+    url = f'https://api.weather.com/v3/wx/observations/current?geocode={lat}%2C{long}&units=e&language=en-US&format' \
+          f'=json&apiKey={API_KEY}'
+    r = requests.get(url, headers=headers)
+    data = r.json()
+    return data
+
+
 @app.route('/documentation')
 def documentation():
     return render_template('documentation.html')
