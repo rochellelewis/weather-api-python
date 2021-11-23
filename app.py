@@ -8,7 +8,7 @@ app = Flask(__name__)
 API_KEY = os.environ.get("API_KEY")
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     # default values for Location Services data
     loc_type = 'postcode'
