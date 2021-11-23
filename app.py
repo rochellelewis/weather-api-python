@@ -31,6 +31,17 @@ def get_weather(lat, long):
     return data
 
 
+def get_geocode(data):
+    # extract latitude and longitude from full location dataset
+    lat = data["location"]["latitude"][0]
+    long = data["location"]["longitude"][0]
+    geocode = {
+        'lat': lat,
+        'long': long,
+    }
+    return geocode
+
+
 @app.route('/documentation')
 def documentation():
     return render_template('documentation.html')
