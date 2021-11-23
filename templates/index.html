@@ -1,8 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
 <main>
-    <section class="container">
-        <h2>Hello World!</h2>
+    <!-- begin dashboard -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <!-- begin search form -->
+            <div class="row mb-5">
+                <div class="col-6">
+                    <h2>Enter Location</h2>
+                    <form method="POST">
+                        <div class="row">
+                            <div class="col">
+                                <input name="search" id="search" type="text" class="form-control" placeholder="Search..." aria-label="search">
+                            </div>
+                            <div class="col">
+                                <select name="loc_type" id="loc_type" class="form-select" aria-label="select location type">
+                                    <option value="postcode" selected>Zip Code</option>
+                                    <option value="city">City</option>
+                                    <option value="state">State</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-info">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- error output -->
+                    {{err}}
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- begin raw data section -->
