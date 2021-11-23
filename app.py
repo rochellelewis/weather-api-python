@@ -10,7 +10,34 @@ API_KEY = os.environ.get("API_KEY")
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # default values for Location Services data
+    loc_type = 'postcode'
+    search_term = '87048'
+    err = ''
+
+    # get Location search form input
+    if request.method == 'POST':
+        search_term = request.form['search']
+        loc_type = request.form['loc_type']
+
+    # GET Location Services dataset
+    search_data = get_locale(loc_type, search_term)
+
+    # extract lat/long from first record from full Location Services dataset
+    geocode = get_geocode(search_data)
+    lat = geocode['lat']
+    long = geocode['long']
+
+    # GET Currents on Demand dataset for location, using lat/long
+    weather_data = get_weather(lat, long)
+
+    # render output to template
+    return render_template(
+        'index.html',
+        data=weather_data,
+        locale=search_data,
+        err=err
+    )
 
 
 def get_locale(location_type, query):
