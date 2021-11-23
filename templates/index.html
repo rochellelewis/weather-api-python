@@ -4,5 +4,31 @@
     <section class="container">
         <h2>Hello World!</h2>
     </section>
+
+    <!-- begin raw data section -->
+    <section class="bg-secondary py-5">
+        <div class="container text-light">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <h2>Location Services Dataset:</h2>
+                    <p>Documentation: <a class="link-light" href="https://weather.com/swagger-docs/ui/sun/v3/sunV3LocationSearch.json" target="_blank">https://weather.com/swagger-docs/ui/sun/v3/sunV3LocationSearch.json</a></p>
+                    <div class="card text-body">
+                        <div class="card-body">
+                            {{locale}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <h2>Currents on Demand Dataset:</h2>
+                    <p>Documentation: <a class="link-light" href="https://weather.com/swagger-docs/ui/sun/v3/sunV3CurrentsOnDemand.json" target="_blank">https://weather.com/swagger-docs/ui/sun/v3/sunV3CurrentsOnDemand.json</a></p>
+                    <div class="card text-body">
+                        <div class="card-body">
+                            {{data}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.container-->
+    </section>
 </main>
 {% endblock content %}
