@@ -1,3 +1,5 @@
+import re
+
 from flask import Flask, render_template, request, Response
 import requests
 import os
@@ -14,11 +16,16 @@ def index():
     # default values for Location Services data
     loc_type = 'postcode'
     search_term = '87048'
+    err = ''
 
     # get Location search form input
     if request.method == 'POST':
         if request.form['search'] and request.form['loc_type']:
-            search_term = request.form['search']
+            # check zip code format, set error message if pattern doesn't match
+            if re.match(r"^\d{5}(?:[-\s]\d{4})?$", request.form['search']):
+                search_term = request.form['search']
+            else:
+                err = 'Zip code format error. Try Again.'
             # limit search type to 'postcode' for now...
             # loc_type = request.form['loc_type']
 
@@ -41,7 +48,8 @@ def index():
         'index.html',
         data=weather_data,
         locale=search_data,
-        power=power_disruption
+        power=power_disruption,
+        err=err
     )
 
 
