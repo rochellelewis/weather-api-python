@@ -4,7 +4,37 @@
     <section class="container py-5">
         <div class="row">
             <div class="col-12">
-                <h2>Documentation</h2>
+                <h2>Introduction</h2>
+                <p>The integration of current weather data with custom log sources is a potential value-added  feature for our clients located in areas impacted by severe weather. Staying ahead of emerging severe weather trends can better help our clients prepare and protect company assets from potential weather-related impact.</p>
+                <p>This application is a simple proof-of-concept demonstrating location-specific weather data sets in action. The data featured here has been provided by <a href="https://www.ibm.com/weather" target="_blank">The Weather Company</a>, a leading global provider of accurate weather forecasting data.</p>
+                <h2>The Weather Company APIs</h2>
+                <p><a href="https://www.ibm.com/weather" target="_blank">The Weather Company</a> provides a suite of robust data packages to address a wide variety of weather-related insights. For this simple demonstration, we utilized three APIs from the Core and Severe Weather packages:</p>
+                <h5>Location Services</h5>
+                <p>"The Location Search API provides the ability to pass location search input parameters from users, applications or other systems and retrieve a set of locations from the TWC Location Parent database. The parameters accepted are city, address, and poi. It also returns related information about these locations for distribution to any TWC platform. This API will return a list of locations matching the search string. For example, passing the character string ‘atla’ would match to the city names 'Atlanta, Georgia, USA' and 'Atlantic City, New Jersey, USA'."</p>
+                <p><a href="https://weather.com/swagger-docs/ui/sun/v3/sunV3LocationSearch.json" target="_blank">https://weather.com/swagger-docs/ui/sun/v3/sunV3LocationSearch.json</a></p>
+                <h5>Currents on Demand</h5>
+                <p>"The Weather Current Conditions are generated on demand from The Weather Company (TWC) Currents On Demand (COD) system. The COD data feed returns a similar set of data elements as traditional site-based observations. The API provides information on temperature, precipitation, wind, barometric pressure, visibility, ultraviolet (UV) radiation, and other related weather observations elements as well as date/time, weather icon codes and phrases. The COD is gridded across the globe at a 4KM geocode resolution."</p>
+                <p><a href="https://weather.com/swagger-docs/ui/sun/v3/sunV3CurrentsOnDemand.json" target="_blank">https://weather.com/swagger-docs/ui/sun/v3/sunV3CurrentsOnDemand.json</a></p>
+                <h5>Power Disruption Index</h5>
+                <p>The Power Disruption index provides indices indicating the potential for power disruptions due to weather.</p>
+                <p><a href="https://weather.com/swagger-docs/ui/sun/v2/SUNv2SevereWeatherPowerDisruptionIndex.json" target="_blank">https://weather.com/swagger-docs/ui/sun/v2/SUNv2SevereWeatherPowerDisruptionIndex.json</a>
+                </p>
+                <h2>Project Setup</h2>
+                <p>We utilized location data to draw current weather conditions along with power disruption indices that track the potential for power outages over a 15 day period. The API data is showcased in a dashboard user interface for visual demonstration purposes, while the raw json data shown on the lower half of the page can be exported or imported and integrated with pre-existing customer datasets, APIs, and databases depending upon need.</p>
+                <p>We created this demo in Python using the Flask web development framework. API GET requests are called passing in latitude and longitude data that has been extracted from Location Services based on user-provided input. For simplicity, this demo has limited the user search to zip code only, although the Location Services API can gather geolocation coordinates based on address, city, state, and more. A default location has also been set here using the 87048 zip code, and for demo purposes we are only grabbing the first location result from the resulting dataset, although multiple locations are featured.</p>
+                <p>Once latitude and longitude data has been collected, API calls are made to gather Current Conditions and the 15-day Power Disruption Index. A small subset of the data has been output into the user interface to demonstrate potentially relevant fields, while the full json dataset is displayed on the bottom part of the page.</p>
+                <p>Much of the data displayed will be familiar to the user, perhaps with the exception of the Power Disruption Index. We included this dataset to highlight an unusual predictive offering by The Weather Company that may be of interest to our clients.</p>
+                <ul>
+                    <li>Day Part refers to a 12hr part of a day, not including day names, over the next 48hrs</li>
+                    <li>Index indicates the potential for power disruptions due to weather. (0=none, 1=low, 2=moderate, 3=high, 4=very high)</li>
+                    <li>Category is descriptive text corresponding to the Index (none, low, moderate, high, very high)</li>
+                </ul>
+                <h5>Further Reading</h5>
+                <p>Read more about TWC data packages: <a href="https://www.ibm.com/downloads/cas/3WXQLMBL" target="_blank">https://www.ibm.com/downloads/cas/3WXQLMBL</a></p>
+                <p>Complete list of Weather Company APIs can be viewed here: <a href="https://docs.google.com/document/d/14OK6NG5GRwezb6-5C1vQJoRdStrGnXUiXBDCmQP9T9s/edit" target="_blank">https://docs.google.com/document/d/14OK6NG5GRwezb6-5C1vQJoRdStrGnXUiXBDCmQP9T9s/edit</a></p>
+                <p>Power Disruption Index, technical details: <a href="https://docs.google.com/document/d/1rdN3APFd2BgkyOFXpJ9NqVRd5yXViJamh1cNyZ6VFrw/edit
+" target="_blank">https://docs.google.com/document/d/1rdN3APFd2BgkyOFXpJ9NqVRd5yXViJamh1cNyZ6VFrw/edit
+</a></p>
             </div>
         </div>
     </section>
