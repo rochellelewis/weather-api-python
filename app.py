@@ -1,9 +1,7 @@
-import re
-
 from flask import Flask, render_template, request, Response
 import requests
 import os
-import json
+import re
 
 app = Flask(__name__)
 
