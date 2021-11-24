@@ -10,33 +10,31 @@
                     <h2>Enter Location</h2>
                     <form method="POST" action="/">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-12 col-lg-4">
                                 <input name="search" id="search" type="text" class="form-control" placeholder="Search..." aria-label="search">
                             </div>
-                            <div class="col">
+                            <div class="col-12 col-lg-4">
                                 <select name="loc_type" id="loc_type" class="form-select" aria-label="select location type">
                                     <option value="postcode" selected>Zip Code</option>
                                     <option value="city" disabled>City</option>
                                     <option value="state" disabled>State</option>
                                 </select>
                             </div>
-                            <div class="col">
+                            <div class="col-12 col-lg-4">
                                 <button type="submit" class="btn btn-info">Search</button>
                             </div>
                         </div>
                     </form>
-                    <!-- error output -->
-                    {{err}}
                 </div>
             </div>
 
             <!-- begin current conditions -->
-            <div class="row">
+            <div class="row mb-4">
                 <h2>Current Conditions</h2>
 
                 <!-- begin conditions card -->
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="card bg-light text-center">
+                    <div class="card bg-light text-center h-100">
                         <!--<img src="https://via.placeholder.com/150" alt="icon">-->
                         <div class="card-body">
                             <h4>{{locale.location.address[0]}}</h4>
@@ -49,7 +47,7 @@
 
                 <!-- begin tabular data -->
                 <div class="col-sm-12 col-md-6 col-lg-8">
-                    <table class="table table-bordered table-striped table-light">
+                    <table class="table table-bordered table-striped table-light mb-0">
                         <tbody>
                             <tr>
                                 <th class="col-md-6" scope="row">Feels Like:</th>
@@ -79,6 +77,38 @@
                     </table>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h3>Power Disruption Index</h3>
+                    <table class="table table-bordered table-striped table-light">
+                                <thead>
+                                    <tr>
+                                        <th class="col-md-4">Day</th>
+                                        <th class="col-md-4">Index</th>
+                                        <th class="col-md-4">Category</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">{{power.powerDisruptionIndex12hour.daypartName[0]}}</th>
+                                        <td>{{power.powerDisruptionIndex12hour.powerDisruptionIndex[0]}}</td>
+                                        <td>{{power.powerDisruptionIndex12hour.powerDisruptionCategory[0]}}</td>
+                                    </tr>
+                                <tr>
+                                        <th scope="row">{{power.powerDisruptionIndex12hour.daypartName[1]}}</th>
+                                        <td>{{power.powerDisruptionIndex12hour.powerDisruptionIndex[1]}}</td>
+                                        <td>{{power.powerDisruptionIndex12hour.powerDisruptionCategory[1]}}</td>
+                                    </tr>
+                                <tr>
+                                        <th scope="row">{{power.powerDisruptionIndex12hour.daypartName[2]}}</th>
+                                        <td>{{power.powerDisruptionIndex12hour.powerDisruptionIndex[2]}}</td>
+                                        <td>{{power.powerDisruptionIndex12hour.powerDisruptionCategory[2]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -95,12 +125,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mb-5">
                     <h2>Currents on Demand Dataset:</h2>
                     <p>Documentation: <a class="link-light" href="https://weather.com/swagger-docs/ui/sun/v3/sunV3CurrentsOnDemand.json" target="_blank">https://weather.com/swagger-docs/ui/sun/v3/sunV3CurrentsOnDemand.json</a></p>
                     <div class="card text-body">
                         <div class="card-body">
                             {{data}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <h2>Power Disruption Index - 15 Day Dataset:</h2>
+                    <p>Documentation: <a class="link-light" href="https://weather.com/swagger-docs/ui/sun/v2/SUNv2SevereWeatherPowerDisruptionIndex.json" target="_blank">https://weather.com/swagger-docs/ui/sun/v2/SUNv2SevereWeatherPowerDisruptionIndex.json</a></p>
+                    <div class="card text-body">
+                        <div class="card-body">
+                            {{power}}
                         </div>
                     </div>
                 </div>
