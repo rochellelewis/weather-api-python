@@ -18,7 +18,8 @@ def index():
     # get Location search form input
     if request.method == 'POST':
         search_term = request.form['search']
-        loc_type = request.form['loc_type']
+        # limit search type to 'postcode' for now...
+        # loc_type = request.form['loc_type']
 
     # GET Location Services dataset
     search_data = get_locale(loc_type, search_term)
